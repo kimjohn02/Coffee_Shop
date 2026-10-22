@@ -244,7 +244,7 @@ class _CoffeeHomeScreenState extends State<CoffeeHomeScreen> {
                             : ListView.separated(
                                 controller: scrollController,
                                 itemCount: _cart.length,
-                                separatorBuilder: (_, __) => const Divider(),
+                                separatorBuilder: (context, index) => const Divider(),
                                 itemBuilder: (context, index) {
                                   final cartItem = _cart[index];
                                   return Row(
@@ -256,7 +256,7 @@ class _CoffeeHomeScreenState extends State<CoffeeHomeScreen> {
                                           width: 60,
                                           height: 60,
                                           fit: BoxFit.cover,
-                                          errorBuilder: (_, __, ___) => Container(
+                                          errorBuilder: (context, error, stackTrace) => Container(
                                             width: 60,
                                             height: 60,
                                             color: const Color(0xFFD4A373),
@@ -494,7 +494,7 @@ class _CoffeeHomeScreenState extends State<CoffeeHomeScreen> {
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 itemCount: _categories.length,
-                separatorBuilder: (_, __) => const SizedBox(width: 8),
+                separatorBuilder: (context, index) => const SizedBox(width: 8),
                 itemBuilder: (context, index) {
                   final cat = _categories[index];
                   final isSelected = cat == _selectedCategory;
@@ -555,11 +555,11 @@ class _CoffeeHomeScreenState extends State<CoffeeHomeScreen> {
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(16),
-                          boxShadow: [
-                            BoxOffset(
-                              color: Colors.black.withOpacity(0.04),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Color(0x0A000000),
                               blurRadius: 8,
-                              offset: const Offset(0, 4),
+                              offset: Offset(0, 4),
                             ),
                           ],
                         ),
@@ -577,7 +577,7 @@ class _CoffeeHomeScreenState extends State<CoffeeHomeScreen> {
                                       width: double.infinity,
                                       height: double.infinity,
                                       fit: BoxFit.cover,
-                                      errorBuilder: (_, __, ___) => Container(
+                                      errorBuilder: (context, error, stackTrace) => Container(
                                         color: const Color(0xFFD4A373),
                                         child: const Center(
                                           child: Icon(Icons.coffee, size: 40, color: Colors.white),
@@ -591,7 +591,7 @@ class _CoffeeHomeScreenState extends State<CoffeeHomeScreen> {
                                     child: Container(
                                       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                                       decoration: BoxDecoration(
-                                        color: Colors.black.withOpacity(0.6),
+                                        color: const Color(0x99000000),
                                         borderRadius: BorderRadius.circular(12),
                                       ),
                                       child: Row(
@@ -674,7 +674,7 @@ class _CoffeeHomeScreenState extends State<CoffeeHomeScreen> {
             _openCartModal();
           }
         },
-        indicatorColor: const Color(0xFFD4A373).withOpacity(0.3),
+        indicatorColor: const Color(0x4DD4A373),
         destinations: [
           const NavigationDestination(icon: Icon(Icons.home_outlined), selectedIcon: Icon(Icons.home), label: 'Home'),
           const NavigationDestination(icon: Icon(Icons.favorite_border), selectedIcon: Icon(Icons.favorite), label: 'Favorites'),
